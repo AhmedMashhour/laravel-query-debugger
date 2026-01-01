@@ -37,13 +37,13 @@ Add the package repository to your `composer.json`:
 Then install via Composer:
 
 ```bash
-composer require sonic/laravel-query-debugger:dev-main
+composer require ahmedmashhour/laravel-query-debugger:dev-main
 ```
 
 Or specify a specific version/tag:
 
 ```bash
-composer require sonic/laravel-query-debugger:^1.0
+composer require ahmedmashhour/laravel-query-debugger:^1.0
 ```
 
 ### Option 2: Install from Local Path
