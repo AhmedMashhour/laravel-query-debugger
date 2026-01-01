@@ -59,7 +59,7 @@ Add the package to your `composer.json`:
         }
     ],
     "require": {
-        "sonic/laravel-query-debugger": "dev-main"
+        "ahmedmashhour/laravel-query-debugger": "dev-main"
     }
 }
 ```
@@ -67,7 +67,7 @@ Add the package to your `composer.json`:
 Run composer install:
 
 ```bash
-composer require sonic/laravel-query-debugger
+composer require ahmedmashhour/laravel-query-debugger
 ```
 
 ### Step 2: Publish Configuration (Optional)
