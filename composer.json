@@ -1,13 +1,13 @@
 {
-    "name": "sonic/laravel-query-debugger",
+    "name": "ahmedmashhour/laravel-query-debugger",
     "description": "Automatic query tracking, analysis, and debugging for Laravel applications with N+1 detection, slow query monitoring, and performance insights",
     "keywords": ["laravel", "query", "debug", "performance", "n+1", "database", "monitoring"],
     "license": "MIT",
     "type": "library",
     "authors": [
         {
-            "name": "Sonic POS",
-            "email": "dev@sonicpos.com"
+            "name": "Ahmed Mashhour",
+            "email": "ahmedmashhour505@gmail.com"
         }
     ],
     "require": {
