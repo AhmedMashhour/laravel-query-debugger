@@ -28,7 +28,7 @@ Add the package repository to your `composer.json`:
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/YOUR-USERNAME/laravel-query-debugger"
+            "url": "https://github.com/AhmedMashhour/laravel-query-debugger.git"
         }
     ]
 }
