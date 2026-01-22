@@ -335,20 +335,41 @@ The package supports two levels of query analysis for slow queries:
 **Configuration Options:**
 
 1. **Slow Queries Only** (Recommended)
-   - `QUERY_DEBUG_ANALYZE=true` - EXPLAIN for slow queries
-   - `QUERY_DEBUG_EXPLAIN_ANALYZE=true` - EXPLAIN ANALYZE for slow queries
+   ```bash
+   # Run EXPLAIN ANALYZE only on slow queries (>= 100ms)
+   QUERY_DEBUG_ANALYZE=false                    # Disable regular EXPLAIN
+   QUERY_DEBUG_EXPLAIN_ANALYZE=true             # Enable EXPLAIN ANALYZE for slow queries
+   QUERY_DEBUG_SLOW_THRESHOLD=100               # Define what "slow" means
+   ```
    - **Use when**: You want to analyze only problematic queries
    - **Overhead**: Low-Medium
+   - **Best for**: Production/staging environments
 
-2. **All Queries** (Deep Debugging)
-   - `QUERY_DEBUG_ANALYZE_ALL=true` - EXPLAIN for all queries
-   - `QUERY_DEBUG_EXPLAIN_ANALYZE_ALL=true` - EXPLAIN ANALYZE for all queries
+2. **Both EXPLAIN and EXPLAIN ANALYZE for Slow Queries**
+   ```bash
+   QUERY_DEBUG_ANALYZE=true                     # EXPLAIN for slow queries
+   QUERY_DEBUG_EXPLAIN_ANALYZE=true             # EXPLAIN ANALYZE for slow queries
+   ```
+   - **Use when**: You need both execution plans and detailed stats
+   - **Overhead**: Medium
+
+3. **All Queries** (Deep Debugging)
+   ```bash
+   QUERY_DEBUG_ANALYZE_ALL=true                 # EXPLAIN for ALL queries
+   QUERY_DEBUG_EXPLAIN_ANALYZE_ALL=true         # EXPLAIN ANALYZE for ALL queries
+   ```
    - **Use when**: You need to analyze every single query in a request
    - **Overhead**: High-Very High (use sparingly!)
+   - **Best for**: Local debugging only
+
+**Important Notes:**
+- The `_ALL` variants will override slow query filtering
+- Make sure to use boolean values (`true`/`false`), not strings
+- After changing `.env`, clear config cache: `php artisan config:clear`
 
 **Recommendation:**
-- **Development**: Use `ANALYZE_ALL` or `EXPLAIN_ANALYZE_ALL` for targeted debugging of specific endpoints
-- **Staging**: Use `ANALYZE=true` (slow queries only) to identify bottlenecks
+- **Local Development**: Use `EXPLAIN_ANALYZE_ALL=true` for targeted debugging of specific endpoints
+- **Staging**: Use `EXPLAIN_ANALYZE=true` (slow queries only) to identify bottlenecks
 - **Production**: Disable all analysis unless debugging critical issues
 
 ### View Logs

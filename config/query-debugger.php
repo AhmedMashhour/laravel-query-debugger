@@ -76,7 +76,7 @@ return [
     | WARNING: This adds overhead. Use only in development/staging.
     |
     */
-    'analyze_queries' => env('QUERY_DEBUG_ANALYZE', false),
+    'analyze_queries' => filter_var(env('QUERY_DEBUG_ANALYZE', false), FILTER_VALIDATE_BOOLEAN),
 
     /*
     |--------------------------------------------------------------------------
@@ -87,7 +87,7 @@ return [
     | WARNING: High overhead. Use only for deep debugging.
     |
     */
-    'analyze_all_queries' => env('QUERY_DEBUG_ANALYZE_ALL', false),
+    'analyze_all_queries' => filter_var(env('QUERY_DEBUG_ANALYZE_ALL', false), FILTER_VALIDATE_BOOLEAN),
 
     /*
     |--------------------------------------------------------------------------
@@ -99,7 +99,7 @@ return [
     | WARNING: Higher overhead than EXPLAIN. Use only in development.
     |
     */
-    'explain_analyze' => env('QUERY_DEBUG_EXPLAIN_ANALYZE', false),
+    'explain_analyze' => filter_var(env('QUERY_DEBUG_EXPLAIN_ANALYZE', false), FILTER_VALIDATE_BOOLEAN),
 
     /*
     |--------------------------------------------------------------------------
@@ -110,7 +110,7 @@ return [
     | WARNING: Very high overhead. Use only for targeted debugging.
     |
     */
-    'explain_analyze_all_queries' => env('QUERY_DEBUG_EXPLAIN_ANALYZE_ALL', false),
+    'explain_analyze_all_queries' => filter_var(env('QUERY_DEBUG_EXPLAIN_ANALYZE_ALL', false), FILTER_VALIDATE_BOOLEAN),
 
     /*
     |--------------------------------------------------------------------------

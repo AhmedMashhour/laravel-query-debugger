@@ -41,8 +41,9 @@ class QueryAnalyzer
         }
 
         // Auto EXPLAIN if configured (for slow queries or all queries)
-        $shouldExplain = ($isSlowQuery && config('query-debugger.analyze_queries', false))
-            || config('query-debugger.analyze_all_queries', false);
+        $analyzeQueries = (bool) config('query-debugger.analyze_queries', false);
+        $analyzeAllQueries = (bool) config('query-debugger.analyze_all_queries', false);
+        $shouldExplain = ($isSlowQuery && $analyzeQueries) || $analyzeAllQueries;
 
         if ($shouldExplain) {
             $queryData['explain'] = $this->explainQuery(
@@ -53,8 +54,9 @@ class QueryAnalyzer
         }
 
         // Auto EXPLAIN ANALYZE if configured (for slow queries or all queries)
-        $shouldExplainAnalyze = ($isSlowQuery && config('query-debugger.explain_analyze', false))
-            || config('query-debugger.explain_analyze_all_queries', false);
+        $explainAnalyze = (bool) config('query-debugger.explain_analyze', false);
+        $explainAnalyzeAll = (bool) config('query-debugger.explain_analyze_all_queries', false);
+        $shouldExplainAnalyze = ($isSlowQuery && $explainAnalyze) || $explainAnalyzeAll;
 
         if ($shouldExplainAnalyze) {
             $queryData['explain_analyze'] = $this->explainAnalyzeQuery(
